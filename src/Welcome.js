@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Welcome.css";
 import logo from './icons/nimbus.svg';
+import {Link} from 'react-router-dom';
 
 class Welcome extends React.Component {
     render() {
@@ -11,7 +12,7 @@ class Welcome extends React.Component {
                     Nimbus is awesome
                 </h1>
                 <p>You will do wonderful things with it</p>
-                <a href="/signup">Sign up now!</a>
+                <Link to="/signup">Sign up now!</Link>
             </div>
         )
     }

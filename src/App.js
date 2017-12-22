@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import LandingPage from './LandingPage';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-class App extends Component {
+export default class App extends Component {
     constructor() {
         super();
-        this.state = {
-            name: "Özgür"
-        };
     }
     render() {
         return (
-            <LandingPage/>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={LandingPage}/>
+                </Switch>
+            </BrowserRouter>
         );
     }
 }
-
-export default App;
