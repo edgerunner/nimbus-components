@@ -15,6 +15,20 @@ export default class Login extends React.Component {
 
     loginPossible()  { return this.state.emailValid && (this.state.password.length > 5) }
     forgotPossible() { return this.state.emailValid }
+    loginButtonText() {
+        if (this.loginPossible()) {
+            return "Log in"
+        } else {
+            return "Enter email and password"
+        }
+    }
+    forgotButtonText() {
+        if (this.forgotPossible()) {
+            return "Forgot password…"
+        } else {
+            return "Forgot password? Enter your email."
+        }
+    }
 
     handleInput(event) {
         let emailValid = this.state.emailValid;
@@ -28,7 +42,8 @@ export default class Login extends React.Component {
     }
 
     handleLogin(event) {
-        alert('A name was submitted: ' + this.state.value);
+        console.log("");
+        alert('Login attempt: ' + this.state.email);
         event.preventDefault();
     }
 
@@ -44,7 +59,6 @@ export default class Login extends React.Component {
                     autoComplete="email"
                     value={this.state.email}
                     onChange={this.handleInput}
-                    onBlur={this.verifyEmail}
                     autoFocus
                     required
                 />
@@ -57,8 +71,19 @@ export default class Login extends React.Component {
                     value={this.state.password}
                     onChange={this.handleInput}
                 />
-                <input id="login"  type="submit" value="Log in" disabled={!this.loginPossible()}/>
-                <input id="forgot" type="button" value="I forgot my password" disabled={!this.forgotPossible()}/>
+                <input
+                    id="login"
+                    type="submit"
+                    value={this.loginButtonText()}
+                    disabled={!this.loginPossible()}
+                    onClick={this.handleLogin}
+                />
+                <input
+                    id="forgot"
+                    type="button"
+                    value={this.forgotButtonText()}
+                    disabled={!this.forgotPossible()}
+                />
             </form>
         </div>
         )
@@ -67,7 +92,7 @@ export default class Login extends React.Component {
 
 function EmailError (props) {
     if (props.show) {
-        return (<label htmlFor="email" data-error="malformed">That's not a proper email address</label>)
+        return (<label htmlFor="email" data-error="malformed">That's not a proper email address yet</label>)
     } else {
         return null
     }
