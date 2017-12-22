@@ -1,0 +1,22 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+main > div {
+    flex: 1 1 100%;
+    box-sizing: border-box;
+}
+@media (min-width: 36rem) {
+    main {
+        height: 100%;
+    }
+    .welcome {
+        flex: 2 2 20rem;
+    }
+    .login {
+        flex: 1 1 12rem;
+     }
+}
