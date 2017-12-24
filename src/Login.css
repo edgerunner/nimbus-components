@@ -43,6 +43,7 @@
 .login label[data-error] {
     color: #cc4400;
     margin-top: -.6rem;
+    margin-bottom: .6rem;
 }
 
 .login input[disabled] {

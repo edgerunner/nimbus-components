@@ -7,11 +7,13 @@ export default class Login extends React.Component {
         this.state = {
             email: "",
             password: "",
-            emailValid: false
+            emailValid: false,
+            invalidLogin: false
         };
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleForgot = this.handleForgot.bind(this);
+        this.dummyLogin = this.dummyLogin.bind(this);
     }
 
     loginPossible()  { return this.state.emailValid && (this.state.password.length > 5) }
@@ -43,8 +45,20 @@ export default class Login extends React.Component {
     }
 
     handleLogin(event) {
-        alert('Login attempt: ' + this.state.email);
         event.preventDefault();
+        // handle login here
+        this.dummyLogin();
+    }
+
+    dummyLogin() {
+        if (
+            this.state.email === 'dummy@dummy.dum' &&
+            this.state.password === 'dummydum'
+        ) {
+            this.props.history.push('/dashboard');
+        } else {
+            this.setState( { invalidLogin: true } );
+        }
     }
 
     handleForgot(event) {
@@ -76,6 +90,7 @@ export default class Login extends React.Component {
                     value={this.state.password}
                     onChange={this.handleInput}
                 />
+                <InvalidLoginError show={this.state.invalidLogin} />
                 <input
                     id="login"
                     type="submit"
@@ -83,23 +98,30 @@ export default class Login extends React.Component {
                     disabled={!this.loginPossible()}
                     onClick={this.handleLogin}
                 />
-
+                <input
+                    id="forgot"
+                    type="button"
+                    value={this.forgotButtonText()}
+                    disabled={!this.forgotPossible()}
+                    onClick={this.handleForgot}
+                />
             </form>
-            <input
-                id="forgot"
-                type="button"
-                value={this.forgotButtonText()}
-                disabled={!this.forgotPossible()}
-                onClick={this.handleForgot}
-            />
         </div>
         )
     }
 }
 
-function EmailError (props) {
+function EmailError(props) {
     if (props.show) {
         return (<label htmlFor="email" data-error="malformed">That's not a proper email address yet</label>)
+    } else {
+        return null
+    }
+}
+
+function InvalidLoginError(props) {
+    if (props.show) {
+        return (<label htmlFor="password" data-error="invalid">Invalid email or password</label>)
     } else {
         return null
     }
