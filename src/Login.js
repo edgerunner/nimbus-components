@@ -10,10 +10,6 @@ export default class Login extends React.Component {
             emailValid: false,
             invalidLogin: false
         };
-        this.handleInput = this.handleInput.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
-        this.handleForgot = this.handleForgot.bind(this);
-        this.dummyLogin = this.dummyLogin.bind(this);
     }
 
     loginPossible()  { return this.state.emailValid && (this.state.password.length > 5) }
@@ -33,7 +29,7 @@ export default class Login extends React.Component {
         }
     }
 
-    handleInput(event) {
+    handleInput = (event) => {
         let emailValid = this.state.emailValid;
         if (event.target.id === "email") {
             emailValid = event.target.value.match(/^\s*[\w-+.]+?@\w+?(?:\.\w+?)*?\s*$/);
@@ -44,13 +40,13 @@ export default class Login extends React.Component {
         });
     }
 
-    handleLogin(event) {
+    handleLogin = (event) => {
         event.preventDefault();
         // handle login here
         this.dummyLogin();
     }
 
-    dummyLogin() {
+    dummyLogin = () => {
         if (
             this.state.email === 'dummy@dummy.dum' &&
             this.state.password === 'dummydum'
@@ -61,7 +57,7 @@ export default class Login extends React.Component {
         }
     }
 
-    handleForgot(event) {
+    handleForgot = (event) => {
         //request new password here
         this.props.history.push('/forgot');
     }
