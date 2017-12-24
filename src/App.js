@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LandingPage from './LandingPage';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory'
 
 export default class App extends Component {
     constructor() {
@@ -9,9 +10,9 @@ export default class App extends Component {
     }
     render() {
         return (
-            <BrowserRouter>
+            <BrowserRouter history={createBrowserHistory()}>
                 <Switch>
-                    <Route exact path="/" component={LandingPage}/>
+                    <Route exact path="/(forgot)?" component={LandingPage}/>
                 </Switch>
             </BrowserRouter>
         );

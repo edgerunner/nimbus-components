@@ -11,6 +11,20 @@ body {
   height: 100%;
   font-family: "Open Sans", sans-serif;
   display: flex;
+  color: #2c6277;
+}
+
+a {
+    color: #2c6277;
+    text-decoration: none;
+    background-color: #dfe5e8;
+    padding: 0 1ex;
+    border-radius: .2em;
+}
+a:hover {
+    background-color: #2c6277;
+    color: #dfe5e8;
+
 }
 
 body > #root {

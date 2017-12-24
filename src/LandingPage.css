@@ -16,7 +16,9 @@ main > div {
     .welcome {
         flex: 2 2 20rem;
     }
-    .login {
+    .login,
+    .forgot {
         flex: 1 1 12rem;
+        padding: 1em;
      }
 }

@@ -5,10 +5,6 @@
     display: block;
     box-sizing: border-box;
 }
-
-.login {
-    padding: 1em;
-}
 .login label {
     font-size: .6rem;
     margin-top: .6rem;

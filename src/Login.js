@@ -11,6 +11,7 @@ export default class Login extends React.Component {
         };
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleForgot = this.handleForgot.bind(this);
     }
 
     loginPossible()  { return this.state.emailValid && (this.state.password.length > 5) }
@@ -42,9 +43,13 @@ export default class Login extends React.Component {
     }
 
     handleLogin(event) {
-        console.log("");
         alert('Login attempt: ' + this.state.email);
         event.preventDefault();
+    }
+
+    handleForgot(event) {
+        //request new password here
+        this.props.history.push('/forgot');
     }
 
     render() {
@@ -78,13 +83,15 @@ export default class Login extends React.Component {
                     disabled={!this.loginPossible()}
                     onClick={this.handleLogin}
                 />
-                <input
-                    id="forgot"
-                    type="button"
-                    value={this.forgotButtonText()}
-                    disabled={!this.forgotPossible()}
-                />
+
             </form>
+            <input
+                id="forgot"
+                type="button"
+                value={this.forgotButtonText()}
+                disabled={!this.forgotPossible()}
+                onClick={this.handleForgot}
+            />
         </div>
         )
     }
