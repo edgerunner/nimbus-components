@@ -8,13 +8,14 @@ main {
 main > div {
     flex: 1 1 100%;
     box-sizing: border-box;
+    padding: 1rem;
 }
-@media (min-width: 36rem) {
+@media (min-width: 34rem) {
     main {
         height: 100%;
     }
     .welcome {
-        flex: 2 2 20rem;
+        flex: 2 2 21rem;
     }
     .login,
     .forgot {

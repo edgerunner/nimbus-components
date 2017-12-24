@@ -1,8 +1,6 @@
 .welcome {
     color:  white;
     background-color: #607d8b;
-    height: 100%;
-    padding: 1rem;
 }
 
 .welcome a {
@@ -19,6 +17,11 @@
     box-shadow: 0 0 1em #05425a, 0 0.5em 2em #2c6277;
 }
 
+.welcome a:hover {
+    background-color: white;
+    color: #05425a;
+}
+
 .welcome h1 img {
     width: auto;
     height: 2em;
@@ -33,7 +36,7 @@
     padding-left: 2em;
     line-height: 1ex;
 }
-@media (min-width: 28rem) {
+@media (min-width: 30rem) {
     .welcome h1 {
         font-size: 4rem;
     }
