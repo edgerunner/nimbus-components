@@ -2,7 +2,7 @@
     color:  rgba(255,255,255,0.8);
     background-color: #607d8b;
     background-image: url(/rain-clouds.jpg);
-    background-blend-mode: overlay;
+    background-blend-mode: luminosity;
 }
 
 .welcome p {
