@@ -18,7 +18,8 @@ a {
     color: #2c6277;
     text-decoration: none;
     background-color: #dfe5e8;
-    padding: 0 1ex;
+    padding: 0 .5ex;
+    margin: 0 .25ex;
     border-radius: .2em;
 }
 a:hover {

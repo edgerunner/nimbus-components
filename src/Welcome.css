@@ -1,9 +1,20 @@
 .welcome {
-    color:  white;
+    color:  rgba(255,255,255,0.8);
     background-color: #607d8b;
+    background-image: url(/rain-clouds.jpg);
+    background-blend-mode: overlay;
+}
+
+.welcome p {
+    text-shadow: 0 0 1ex #05425a;
 }
 
 .welcome a {
+    color: white;
+    background-color: transparent;
+}
+
+.welcome a#signup {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -17,7 +28,7 @@
     box-shadow: 0 0 1em #05425a, 0 0.5em 2em #2c6277;
 }
 
-.welcome a:hover {
+.welcome a#signup:hover {
     background-color: white;
     color: #05425a;
 }
