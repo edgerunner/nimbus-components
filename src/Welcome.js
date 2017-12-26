@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "./Welcome.css";
 import logo from './icons/nimbus.svg';
 import {Link} from 'react-router-dom';
@@ -8,7 +8,7 @@ class Welcome extends React.Component {
         return (
             <div className="welcome">
                 <h1>
-                    <img src={logo}/>
+                    <img src={logo} alt=""/>
                     Nimbus is here!
                 </h1>
                 <p>

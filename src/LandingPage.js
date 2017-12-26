@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Route} from 'react-router-dom';
 import Welcome from './Welcome';
 import Login from './Login';
@@ -7,10 +7,7 @@ import "./LandingPage.css"
 import "./icons/nimbus.svg"
 
 
-class LandingPage extends Component {
-    constructor() {
-        super();
-    }
+class LandingPage extends React.Component {
     render() {
         return (
             <main>
