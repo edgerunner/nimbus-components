@@ -14,11 +14,11 @@ export default class Signup extends React.Component {
     }
 
     handleChange ({id, value}) {
-        const valid = this[`validate_${id}`](value);
+        const valid = this[`${id}Valid`](value);
         this.setState({ [id]: {value, valid} })
     }
 
-    validate_name (name) {
+    nameValid (name) {
         if (!name) { return { blank: "Name is required" } }
         if (name.match(regex.fullname)) {
             return { good: `Nice to meet you ${name}` }
@@ -26,7 +26,7 @@ export default class Signup extends React.Component {
         return { error: "I have no idea how we got here" }
     }
 
-    validate_email (name) {
+    emailValid (name) {
         if (!name) { return { blank: "Email is required" } }
         if (name.match(regex.email)) {
             return { good: 'That looks good' }
@@ -34,7 +34,7 @@ export default class Signup extends React.Component {
         return { error: "I have no idea how we got here" }
     }
 
-    validate_password (name) {
+    passwordValid (name) {
         if (!name) { return { blank: "6-40 characters, at least one each of uppercase, lowercase and digits" } }
         if (name.match(regex.password)) {
             return { good: 'That looks good' }
