@@ -45,11 +45,23 @@ label.blank,
 label.good {
     margin-top: -.6rem;
     margin-bottom: .6rem;
+    opacity: 0;
+
+    animation-name: delayed;
+    animation-duration: 500ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; /* or: backwards, both, none */
+    animation-delay: 3s; /* or: Xms */
 }
+
 label.error { color: #cc4400; }
 label.blank { color: #999999; }
 label.good  { color: #009944; }
 
+@keyframes delayed {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
 input[disabled] {
     opacity: .6;
