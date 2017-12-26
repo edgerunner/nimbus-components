@@ -1,20 +1,20 @@
 import React from 'react';
 import "./Forms.css"
 import regex from './regex'
+import {Field} from './Forms'
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
-            password: "",
-            emailValid: false,
-            invalidLogin: false
+            email: { valid: { blank: "Required" } },
+            password: { valid: { blank: "Required" } }
         };
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    loginPossible()  { return this.state.emailValid && (this.state.password.length > 5) }
-    forgotPossible() { return this.state.emailValid }
+    loginPossible()  { return this.state.email.valid.good && this.state.password.valid.good }
+    forgotPossible() { return this.state.email.valid.good }
     loginButtonText() {
         if (this.loginPossible()) {
             return "Log in"
@@ -30,15 +30,25 @@ export default class Login extends React.Component {
         }
     }
 
-    handleInput = (event) => {
-        let emailValid = this.state.emailValid;
-        if (event.target.id === "email") {
-            emailValid = event.target.value.match(regex.email);
-        }
-        this.setState({
-            [event.target.id]: event.target.value,
-            emailValid: emailValid
-        });
+    handleChange ({id, value}) {
+        const valid = this[`${id}Valid`](value);
+        this.setState({ [id]: {value, valid} })
+    }
+
+    emailValid (email) {
+        if (!email) { return { blank: "Email is required" } }
+        if (email.match(regex.email)) {
+            return { good: 'That looks good' }
+        } else { return { error: "That doesn't look like a proper email address" } }
+        return { error: "I have no idea how we got here" }
+    }
+
+    passwordValid (password) {
+        if (!password) { return { blank: "Enter your password to login" } }
+        if (password.match(regex.password)) {
+            return { good: '✓' }
+        } else { return { error: "A password is at least 6 characters long with uppercase and lowercase letters, and numbers in it" } }
+        return { error: "I have no idea how we got here" }
     }
 
     handleLogin = (event) => {
@@ -54,7 +64,7 @@ export default class Login extends React.Component {
         ) {
             this.props.history.push('/dashboard');
         } else {
-            this.setState( { invalidLogin: true } );
+            this.setState( { password: { valid: { error: "Wrong email or password" } } } );
         }
     }
 
@@ -68,26 +78,9 @@ export default class Login extends React.Component {
         <div className="login">
             <h5>Already have an account?</h5>
             <form>
-                <label htmlFor="email">Email</label>
-                <input
-                    id="email"
-                    type="email"
-                    autoComplete="email"
-                    value={this.state.email}
-                    onChange={this.handleInput}
-                    autoFocus
-                    required
-                />
-                <EmailError show={!this.state.emailValid && this.state.email.length > 0}/>
-                <label htmlFor="password">Password</label>
-                <input
-                    id="password"
-                    type="password"
-                    autoComplete="current-password"
-                    value={this.state.password}
-                    onChange={this.handleInput}
-                />
-                <InvalidLoginError show={this.state.invalidLogin} />
+                <Field id='email' type='email' label='Email address' { ...this.state.email } onChange={this.handleChange} />
+                <Field id='password' type='password' label='Password' { ...this.state.password } onChange={this.handleChange} />
+
                 <input
                     id="login"
                     type="submit"
@@ -105,14 +98,6 @@ export default class Login extends React.Component {
             </form>
         </div>
         )
-    }
-}
-
-function EmailError(props) {
-    if (props.show) {
-        return (<label htmlFor="email" data-error="malformed">That's not a proper email address yet</label>)
-    } else {
-        return null
     }
 }
 
