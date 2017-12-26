@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Forms.css"
+import regex from './regex'
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export default class Login extends React.Component {
     handleInput = (event) => {
         let emailValid = this.state.emailValid;
         if (event.target.id === "email") {
-            emailValid = event.target.value.match(/^\s*[\w-+.]+?@\w+?(?:\.\w+?)*?\s*$/);
+            emailValid = event.target.value.match(regex.email);
         }
         this.setState({
             [event.target.id]: event.target.value,
