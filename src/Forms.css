@@ -1,16 +1,16 @@
-.login form,
-.login input,
-.login label {
+form,
+input,
+label {
     width: 100%;
     display: block;
     box-sizing: border-box;
 }
-.login label {
+label {
     font-size: .6rem;
     margin-top: .6rem;
     opacity: 0.8;
 }
-.login input {
+input {
     margin-bottom: .6rem;
     border: none;
     background-color: #dae1e4;
@@ -23,29 +23,34 @@
     border: solid 1px transparent;
 }
 
-.login input:focus {
+input:focus {
     border: solid 1px #2c6277;
 }
 
-.login input[type=submit] {
+input[type=submit] {
     background-color: #2c6277;
     color: white;
     font-weight: 600;
     box-shadow: 0 0 .5rem #6c9fb5;
 }
 
-.login input#forgot {
+input[type=button] {
     background-color: #8fb6c7;
     color: #2d6177;
     box-shadow: 0 0 .5rem #6c9fb5;
 }
 
-.login label[data-error] {
-    color: #cc4400;
+label.error,
+label.blank,
+label.good {
     margin-top: -.6rem;
     margin-bottom: .6rem;
 }
+label.error { color: #cc4400; }
+label.blank { color: #999999; }
+label.good  { color: #009944; }
 
-.login input[disabled] {
+
+input[disabled] {
     opacity: .6;
 }

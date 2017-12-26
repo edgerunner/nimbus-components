@@ -8,7 +8,7 @@ export default class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/(forgot)?" component={LandingPage}/>
+                    <Route exact path="/(forgot|signup)?" component={LandingPage}/>
                 </Switch>
             </BrowserRouter>
         );

@@ -14,11 +14,10 @@ main > div {
     main {
         height: 100%;
     }
-    .welcome {
+    main > div.welcome {
         flex: 2 2 21rem;
     }
-    .login,
-    .forgot {
+    main > div {
         flex: 1 1 12rem;
         padding: 1em;
      }
