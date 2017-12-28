@@ -1,18 +1,11 @@
 import React from 'react';
 import './Forms.css';
 
-export function Field({id, label, onChange, valid, ...rest}) {
-    const onChangeHandler = (event) => {
-        onChange({
-            id: event.target.id,
-            value: event.target.value
-        });
-    }
-
+export function Field({id, label, valid, ...rest}) {
     return (
         <React.Fragment>
             <label htmlFor={id}>{label}</label>
-            <input id={id} onChange={onChangeHandler} {...rest} />
+            <input id={id} {...rest} />
             <ValidationMessages forField={id} valid={valid} />
         </React.Fragment>
     );

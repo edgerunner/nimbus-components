@@ -13,7 +13,8 @@ export default class Signup extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange ({id, value}) {
+    handleChange (event) {
+        const {target: {id, value}} = event;
         const valid = this[`${id}Valid`](value);
         this.setState({ [id]: {value, valid} })
     }

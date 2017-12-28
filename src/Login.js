@@ -30,7 +30,8 @@ export default class Login extends React.Component {
         }
     }
 
-    handleChange ({id, value}) {
+    handleChange (event) {
+        const {target: {id, value}} = event;
         const valid = this[`${id}Valid`](value);
         this.setState({ [id]: {value, valid} })
     }
