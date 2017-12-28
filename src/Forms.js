@@ -27,8 +27,7 @@ export function Field(props) {
     );
 }
 
-export function ErrorMessage(props) {
-    const {forField, children, type, ...rest} = props
+export function ErrorMessage({forField, children, type, ...rest}) {
     return (
         <label htmlFor={forField} className={type} key={type} {...rest}>
             {children}
