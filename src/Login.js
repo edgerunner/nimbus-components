@@ -75,31 +75,45 @@ export default class Login extends React.Component {
     }
 
     render() {
-        return (
-        <div className="login">
-            <h5>Already have an account?</h5>
-            <form>
-                <Field id='email' type='email' label='Email address' { ...this.state.email } onChange={this.handleChange} />
-                <Field id='password' type='password' label='Password' { ...this.state.password } onChange={this.handleChange} />
-
-                <input
-                    id="login"
-                    type="submit"
-                    value={this.loginButtonText()}
-                    disabled={!this.loginPossible()}
-                    onClick={this.handleLogin}
-                />
-                <input
-                    id="forgot"
-                    type="button"
-                    value={this.forgotButtonText()}
-                    disabled={!this.forgotPossible()}
-                    onClick={this.handleForgot}
-                />
-            </form>
-        </div>
-        )
+        return <LoginForm
+            email={this.state.email}
+            password={this.state.password}
+            handleChange={this.handleChange}
+            handleLogin={this.handleLogin}
+            handleForgot={this.handleForgot}
+            loginButtonText={this.loginButtonText}
+            forgotButtonText={this.forgotButtonText}
+            loginPossible={this.loginPossible}
+            forgotPossible={this.forgotPossible}
+               />
     }
+}
+
+function LoginForm({email, password, handleChange, handleLogin, handleForgot, loginButtonText, forgotButtonText, loginPossible, forgotPossible}) {
+    return (
+    <div className="login">
+        <h5>Already have an account?</h5>
+        <form>
+            <Field id='email' type='email' label='Email address' { ...email } onChange={handleChange} />
+            <Field id='password' type='password' label='Password' { ...password } onChange={handleChange} />
+
+            <input
+                id="login"
+                type="submit"
+                value={loginButtonText()}
+                disabled={!loginPossible()}
+                onClick={handleLogin}
+            />
+            <input
+                id="forgot"
+                type="button"
+                value={forgotButtonText()}
+                disabled={!forgotPossible()}
+                onClick={handleForgot}
+            />
+        </form>
+    </div>
+    )
 }
 
 function InvalidLoginError(props) {
