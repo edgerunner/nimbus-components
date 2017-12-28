@@ -12,9 +12,9 @@ export function Field(props) {
     const valid = props.valid || {};
     const messages = Object.keys(valid).map((type)=>{
         return (
-            <label htmlFor={props.id} className={type} key={type}>
-                {props.valid[type]}
-            </label>
+            <ErrorMessage forField={props.id} type={type}>
+                {valid[type]}
+            </ErrorMessage>
         );
     });
 
@@ -24,5 +24,14 @@ export function Field(props) {
             <input {...props } onChange={onChange} />
             {messages}
         </React.Fragment>
+    );
+}
+
+export function ErrorMessage(props) {
+    const {forField, children, type, ...rest} = props
+    return (
+        <label htmlFor={forField} className={type} key={type} {...rest}>
+            {children}
+        </label>
     );
 }
