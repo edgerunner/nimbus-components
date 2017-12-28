@@ -1,9 +1,9 @@
 import React from 'react';
 import './Forms.css';
 
-export function Field(props) {
-    const onChange = (event) => {
-        props.onChange({
+export function Field({id, label, onChange, valid, ...rest}) {
+    const onChangeHandler = (event) => {
+        onChange({
             id: event.target.id,
             value: event.target.value
         });
@@ -11,9 +11,9 @@ export function Field(props) {
 
     return (
         <React.Fragment>
-            <label htmlFor={props.id}>{props.label}</label>
-            <input {...props } onChange={onChange} />
-            <ValidationMessages forField={props.id} valid={props.valid} />
+            <label htmlFor={id}>{label}</label>
+            <input id={id} onChange={onChangeHandler} {...rest} />
+            <ValidationMessages forField={id} valid={valid} />
         </React.Fragment>
     );
 }
