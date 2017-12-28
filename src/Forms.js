@@ -9,25 +9,26 @@ export function Field(props) {
         });
     }
 
-    const valid = props.valid || {};
-    const messages = Object.keys(valid).map((type)=>{
-        return (
-            <ErrorMessage forField={props.id} type={type}>
-                {valid[type]}
-            </ErrorMessage>
-        );
-    });
-
     return (
         <React.Fragment>
             <label htmlFor={props.id}>{props.label}</label>
             <input {...props } onChange={onChange} />
-            {messages}
+            <ValidationMessages forField={props.id} valid={props.valid} />
         </React.Fragment>
     );
 }
 
-export function ErrorMessage({forField, children, type, ...rest}) {
+export function ValidationMessages({forField, valid = {}, ...rest}) {
+    return Object.keys(valid).map((type)=>{
+        return (
+            <ValidationMessage forField={forField} type={type} {...rest}>
+                {valid[type]}
+            </ValidationMessage>
+        );
+    });
+}
+
+export function ValidationMessage({forField, children, type, ...rest}) {
     return (
         <label htmlFor={forField} className={type} key={type} {...rest}>
             {children}
