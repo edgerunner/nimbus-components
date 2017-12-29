@@ -44,9 +44,8 @@ input[type=button] {
     box-shadow: 0 0 .5rem #6c9fb5;
 }
 
-label.error,
-label.blank,
-label.good {
+
+input + label {
     margin-top: -.6rem;
     margin-bottom: .6rem;
     opacity: 0;
