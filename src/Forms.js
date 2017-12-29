@@ -14,17 +14,17 @@ export function Field({id, label, valid, ...rest}) {
 export function ValidationMessages({forField, valid = {}, ...rest}) {
     return Object.keys(valid).map((type)=>{
         return (
-            <ValidationMessage forField={forField} type={type} {...rest}>
+            <Message forField={forField} type={type} {...rest}>
                 {valid[type]}
-            </ValidationMessage>
+            </Message>
         );
     });
 }
 
-export function ValidationMessage({forField, children, type, ...rest}) {
-    return (
-        <label htmlFor={forField} className={type} key={type} {...rest}>
-            {children}
-        </label>
-    );
+export function Message({children, forField, type, show=(()=>true), ...rest}) {
+    if (show()) {
+        return <label htmlFor={forField} className={type} {...rest}>{children}</label>
+    } else {
+        return null;
+    }
 }
