@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field } from './Forms';
+import { Field, Button } from './Forms';
 import regex from './regex'
 
 export default class Signup extends React.Component {
@@ -49,6 +49,7 @@ export default class Signup extends React.Component {
                 <Field id='name' type='text' label='Full name' { ...this.state.name } onChange={this.handleChange} />
                 <Field id='email' type='email' label='Email address' { ...this.state.email } onChange={this.handleChange} />
                 <Field id='password' type='password' label='Choose a good password' { ...this.state.password } onChange={this.handleChange} />
+                <Button id='signup' className='submit'>Sign up <span>but don't</span></Button>
             </div>
         )
     }

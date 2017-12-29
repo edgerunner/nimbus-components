@@ -1,5 +1,6 @@
 form,
 input,
+button,
 label {
     width: 100%;
     display: block;
@@ -10,6 +11,7 @@ label {
     margin-top: .6rem;
     opacity: 0.8;
 }
+button,
 input {
     margin-bottom: .6rem;
     border: none;
@@ -27,6 +29,7 @@ input:focus {
     border: solid 1px #2c6277;
 }
 
+button.submit,
 input[type=submit] {
     background-color: #2c6277;
     color: white;
@@ -34,6 +37,7 @@ input[type=submit] {
     box-shadow: 0 0 .5rem #6c9fb5;
 }
 
+button,
 input[type=button] {
     background-color: #8fb6c7;
     color: #2d6177;

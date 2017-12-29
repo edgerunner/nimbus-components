@@ -28,3 +28,11 @@ export function Message({children, forField, type, show=(()=>true), ...rest}) {
         return null;
     }
 }
+
+export function Button({id, children, disabled, valid, ...rest}) {
+    return (
+        <button id={id} disabled={disabled} {...rest}>
+            {children}
+        </button>
+    )
+}

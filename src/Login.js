@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Forms.css"
 import regex from './regex'
-import {Field} from './Forms'
+import {Field, Button} from './Forms'
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -10,7 +10,11 @@ export default class Login extends React.Component {
             email: { valid: { blank: "Required" } },
             password: { valid: { blank: "Required" } }
         };
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange   = this.handleChange.bind(this)
+        this.loginPossible  = this.loginPossible.bind(this)
+        this.forgotPossible = this.forgotPossible.bind(this)
+        this.loginButtonText = this.loginButtonText.bind(this)
+        this.forgotButtonText = this.forgotButtonText.bind(this)
     }
 
     loginPossible()  { return this.state.email.valid.good && this.state.password.valid.good }
@@ -96,21 +100,8 @@ function LoginForm({email, password, handleChange, handleLogin, handleForgot, lo
         <form>
             <Field id='email' type='email' label='Email address' { ...email } onChange={handleChange} />
             <Field id='password' type='password' label='Password' { ...password } onChange={handleChange} />
-
-            <input
-                id="login"
-                type="submit"
-                value={loginButtonText()}
-                disabled={!loginPossible()}
-                onClick={handleLogin}
-            />
-            <input
-                id="forgot"
-                type="button"
-                value={forgotButtonText()}
-                disabled={!forgotPossible()}
-                onClick={handleForgot}
-            />
+            <Button id="login" className="submit" disabled={!loginPossible()} onClick={handleLogin}>{loginButtonText()}</Button>
+            <Button id="forgot" disabled={!forgotPossible()} onClick={handleForgot}>{forgotButtonText()}</Button>
         </form>
     </div>
     )
